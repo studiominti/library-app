@@ -3,24 +3,24 @@
         <div class="card-deck">
         <% @books.each do |book| %>
         <div class="card">
-            <div class="card-body">
-            <%= link_to book.title, book, class:"card-title" %>
-            <h5 class="card-title">Autor: <%= book.author %></h5>
-            <h5 class="card-title">Estado: <%= book.status %></h5>
-            <p class="card-text">Prestado a: <%= book.lend_to %></p>
+            <div class="card-body card-bg">
+            <h5><%= link_to book.title, book, class:"card-title book-title" %></h5>
+            <p class="card-title"><strong>Autor:</strong> <%= book.author %></p>
+            <p class="card-title"><strong>Estado:</strong> <%= book.status %></p>
+            <p class="card-text"><strong>Prestado a:</strong> <%= book.lend_to %></p>
             <%= link_to 'Editar', edit_book_path(book), class: 'btn btn-primary' %>
             <%= link_to 'Eliminar', book, class: 'btn btn-primary', method: :delete, data: { confirm: '¿Estas segura?' } %>
             </div>
             <div class="card-footer">
-            <small class="text-muted">Prestado el: <%= book.created_at %></small>
+            <small class="text-muted"><strong>Prestado el:</strong> <%= book.created_at %></small>
             </div>
             <% if book.status == 'en estante' %>
                 <div class="card-footer">
-                <small class="text-muted">Entregado el: <%= book.updated_at %></small>
+                <small class="text-muted"><strong>Entregado el:</strong> <%= book.updated_at %></small>
                 </div>
             <% else %>
                 <div class="card-footer">
-                <small class="text-muted">Entregado el:</small>
+                <small class="text-muted"><strong>Entregado el:</strong></small>
                 </div>
             <% end %>
         </div>
