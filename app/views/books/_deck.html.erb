@@ -1,0 +1,20 @@
+<div class="card-deck">
+<% @books.each do |book| %>
+  <div class="card">
+    <div class="card-body">
+      <%= link_to book.title, book, class:"card-title" %>
+      <h5 class="card-title"><%= book.author %></h5>
+      <h5 class="card-title"><%= book.status %></h5>
+      <p class="card-text"><%= book.lend_to %></p>
+      <%= link_to 'Editar', edit_book_path(book) %>
+      <%= link_to '¿Devuelto?', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Prestado el: <%= book.created_at %></small>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Entregado el: <%= book.updated_at %></small>
+    </div>
+  </div>
+  <% end %>
+</div>
