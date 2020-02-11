@@ -1,26 +1,30 @@
-<div class="card-deck">
-<% @books.each do |book| %>
-  <div class="card">
-    <div class="card-body">
-      <%= link_to book.title, book, class:"card-title" %>
-      <h5 class="card-title">Autor: <%= book.author %></h5>
-      <h5 class="card-title">Estado: <%= book.status %></h5>
-      <p class="card-text">Prestado a: <%= book.lend_to %></p>
-      <%= link_to 'Editar', edit_book_path(book), class: 'btn btn-primary' %>
-      <%= link_to 'Eliminar', book, class: 'btn btn-primary', method: :delete, data: { confirm: '¿Estas segura?' } %>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Prestado el: <%= book.created_at %></small>
-    </div>
-    <% if book.status == 'en estante' %>
-        <div class="card-footer">
-        <small class="text-muted">Entregado el: <%= book.updated_at %></small>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-deck">
+        <% @books.each do |book| %>
+        <div class="card">
+            <div class="card-body">
+            <%= link_to book.title, book, class:"card-title" %>
+            <h5 class="card-title">Autor: <%= book.author %></h5>
+            <h5 class="card-title">Estado: <%= book.status %></h5>
+            <p class="card-text">Prestado a: <%= book.lend_to %></p>
+            <%= link_to 'Editar', edit_book_path(book), class: 'btn btn-primary' %>
+            <%= link_to 'Eliminar', book, class: 'btn btn-primary', method: :delete, data: { confirm: '¿Estas segura?' } %>
+            </div>
+            <div class="card-footer">
+            <small class="text-muted">Prestado el: <%= book.created_at %></small>
+            </div>
+            <% if book.status == 'en estante' %>
+                <div class="card-footer">
+                <small class="text-muted">Entregado el: <%= book.updated_at %></small>
+                </div>
+            <% else %>
+                <div class="card-footer">
+                <small class="text-muted">Entregado el:</small>
+                </div>
+            <% end %>
         </div>
-    <% else %>
-        <div class="card-footer">
-        <small class="text-muted">Entregado el:</small>
+        <% end %>
         </div>
-    <% end %>
-  </div>
-  <% end %>
+    </div>
 </div>
