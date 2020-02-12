@@ -9,8 +9,8 @@
       <%= f.label :status_eq, "Filtro por estado" %>
       <%= f.select :status_eq, options_for_select(Book.statuses , @q.status_eq), {},{class: 'form-control'} %> 
       </div>
-      <%= f.submit "Search", class: 'btn btn-primary' %>
-      <%= link_to 'Reset', books_path, class: 'btn btn-primary' %>
+      <%= f.submit "Buscar", class: 'btn btn-primary' %>
+      <%= link_to 'Mostrar todo', books_path, class: 'btn btn-primary' %>
       <% end %>
   </div>
 </div>
